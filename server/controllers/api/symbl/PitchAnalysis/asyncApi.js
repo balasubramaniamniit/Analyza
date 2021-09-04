@@ -1,5 +1,4 @@
 import { generateAuthToken, getActionItems, getAnalytics, getConversationData, getEntities, getFollowUps, getQuestions, getSpeechToText, getSummary, getTopics } from '../ConversationApi/apiCalls.js';
-import mongoose from 'mongoose';
 import request from 'request';
 import multer from 'multer'
 import ytdl from 'ytdl-core';
