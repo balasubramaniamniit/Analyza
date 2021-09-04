@@ -105,7 +105,7 @@
       * Websockets
 
   ### Flow Chart:
-  ![Flow Chart](https://github.com/Har-shPandey/Angel-Hack/blob/master/public/images/READMEimages/FlowChart.png)
+  ![Flow Chart](https://github.com/Har-shPandey/Angel-Hack/blob/main/public/images/READMEimages/FlowChart.png)
 
 
   ### Applications:
