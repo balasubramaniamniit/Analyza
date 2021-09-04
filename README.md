@@ -46,13 +46,13 @@
 
 * NodeJS
 * NPM
-* MongoDB
+* Astra DB
 * Text Editor. eg: Visual Code Studio
 * CLI Tool
 
 ### Installation
 
-1. Two APIs are being used 
+1. Three APIs are being used 
 - symbl.ai API
 - words API
 - Komprehend API
@@ -84,7 +84,7 @@
   ### Implementation: 
   On the client side, the web pages were implemented using ReactJs as a frontend framework.
 
-  On Server side, NodeJs is used as a runtime environment, with Express as a framework and MongoDb Atlas as a cloud database. 
+  On Server side, NodeJs is used as a runtime environment, with Express as a framework and Astra DB as database. 
 
   Among APIs, we have used Symbl.ai’s Streaming API, Telephony API, Async Video API, Conversation API for speech analytics and Komprehend’s NLP API for other sentence traits (such as: emotions, intent, abusive and sarcastical words) to facilitate our services.
 
