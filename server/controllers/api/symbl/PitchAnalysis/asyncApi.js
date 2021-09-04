@@ -244,7 +244,7 @@ export const sendVideoData = async (req, res) => {
                                                 messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
                                                 messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                             }
-                                            await AnalysisData.updateOne({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).exec(function (err, response) {
+                                            await updateAnalysisDataHistory({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).then(function (response) {
                                                 if (err) {
                                                     console.log(err)
                                                 }
@@ -325,7 +325,7 @@ export const sendVideoData = async (req, res) => {
                                             messageData[i].profane = Object.keys(tempProfane).reduce((a, b) => tempProfane[a] > tempProfane[b] ? a : b)
                                             messageData[i].sarcasm = Object.keys(tempSarcasm).reduce((a, b) => tempSarcasm[a] > tempSarcasm[b] ? a : b)
                                         }
-                                        await AnalysisData.updateOne({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).exec(function (err, response) {
+                                        await updateAnalysisDataHistory({ _id: existingUser._id }, { $push: { conversationIdData: { conversationId: data.messages.messages[0].conversationId, createdAt: Date.now(), meetingName: req.body.meetingName, analysisData: data, url: url } } }).then(function (response) {
                                             if (err) {
                                                 console.log(err)
                                             }

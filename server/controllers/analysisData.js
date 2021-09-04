@@ -1,16 +1,14 @@
-import mongoose from 'mongoose';
-import AnalysisData from '../models/analysisDataModel.js';
 import { getDashBoardData, getDashBoardDataList, getUserHistoryForAnalysisData } from './cassandra.js';
 
 
 export const getDataToCompare = async (req, res) => {
     const { conversationId1, conversationId2 } = req.params;
-    await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: conversationId1 } } }).exec(async (err, response1) => {
+    await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: conversationId1 } } }).then(async (response1) => {
         if (err) {
             console.log(err)
         }
         else {
-            await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: conversationId2 } } }).exec((err, response2) => {
+            await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: conversationId2 } } }).then((response2) => {
                 if (err) {
                     console.log(err)
                 }
@@ -44,7 +42,7 @@ export const getConversationList = async (req, res) => {
 }
 
 export const fetchAnanlysisData = async (req, res) => {
-    await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: req.params.conversationId } } }).exec(async (err, response) => {
+    await getDashBoardData({ handlerId: req.userId }, { conversationIdData: { $elemMatch: { conversationId: req.params.conversationId } } }).then(async (response) => {
         if (err) {
             console.log(err)
             res.status(204).json({ message: "Please upload a video to generate analysis data!" })
