@@ -98,7 +98,7 @@
       * NodeJS
       * ExpressJS
   * Database
-      * MongoDB
+      * Astra DB
   * APIs
       * Symbl.ai
       * Words API
