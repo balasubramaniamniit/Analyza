@@ -11,3 +11,15 @@ export const signin = (formData, history) => async (dispatch) => {
         console.log(error);
     }
 }
+
+export const signup = (formData, history) => async (dispatch) => {
+    try {
+        console.log(formData)
+        const { data } = await api.signUp(formData);
+        dispatch({ type: AUTH, data });
+        history.push('/home');
+
+    } catch (error) {
+        console.log(error);
+    }
+}
