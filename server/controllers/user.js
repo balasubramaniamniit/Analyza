@@ -1,15 +1,12 @@
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-// import mongoose from 'mongoose';
 
-import User from "../models/user.js"
 import { addUser, checkUserExisting, getDocument } from './cassandra.js';
 
 export const signup = async (req, res) => {
     const { email, password, confirmPassword, firstName, lastName } = req.body;
 
     try {
-        // const existingUser = await User.findOne({ email });
         let existingUser = await checkUserExisting(req.body.email)
         existingUser = JSON.parse(existingUser)
         if (Object.keys(existingUser.data).length > 0) {
@@ -19,7 +16,6 @@ export const signup = async (req, res) => {
         else {
             if (password !== confirmPassword) return res.status(400).json({ message: "Passwords don't match! " });
             const hashedPassword = await bcrypt.hash(password, 12);
-            // const result = await User.create({ email, password: hashedPassword, name: `${firstName} ${lastName}` });
             const result = await addUser({ email, password: hashedPassword, name: `${firstName} ${lastName}` })
             let document = await getDocument(result.documentId)
             document = JSON.parse(document)
